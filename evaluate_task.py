@@ -6,7 +6,6 @@ from get_completion import get_completion_zero_shot
 
 def evaluate_multiple_choice_task(json_string, system_message, model):    
     
-
     df = pd.DataFrame(columns=['prompt','expected', 'answer', 'correct'])
 
 
@@ -30,7 +29,7 @@ def evaluate_multiple_choice_task(json_string, system_message, model):
                 if answer is not None :
                       correct = answer[1:] == expected
                 else :
-                      correct = False
-                df.append({'prompt': prompt, 'answer': answer, 'expected': expected, 'correct': correct}, ignore_index=True)  # type: ignore
-    
+                      correct = False       
+                print(df)
+                df.loc[len(df.index)] = [prompt, expected, answer, correct]
     return df
