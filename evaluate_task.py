@@ -1,55 +1,68 @@
 import os
 import json
 import random
+import re
 import time
 import pandas as pd
 from get_completion import get_completion_zero_shot
 
 
-N_EXAMPLES = 5
+N_EXAMPLES = 50
+MULTIPLE_CHOICE_SUFFIX = "First answer repeating the answer you choose, in the second line explain your answer in 20 words. Choices:"
 
-
-def shrink_examples(data):
-    #shrinks the examples to n examples randomly selected with no repetitions
+def shrink_examples(data, n):
         examples = data.get("examples", [])
-        if len(examples) > N_EXAMPLES:
-            examples = random.sample(examples, N_EXAMPLES) 
+        random.shuffle(examples) # shuffle examples so the difficult ones are not always at the end
+        if len(examples) > n:
+            examples = random.sample(examples, n) 
         return examples
 
+def built_system_message(system_message, example):
+        system_message = system_message + " " + MULTIPLE_CHOICE_SUFFIX
+        for choice in example.get("target_scores", {}).keys():
+            system_message = system_message + "-" + choice + "\n"
+        return system_message 
                   
 
-def evaluate_multiple_choice_task(json_string, system_message, model):    
-    
-        df = pd.DataFrame(columns=['prompt','expected', 'answer', 'correct'])
+def evaluate_multiple_choice_task(json_string, system_message, model):   
 
+        df = pd.DataFrame(columns=['prompt','expected', 'answer', 'explanation', 'correct'])
 
         with open(json_string, 'r') as file:
                 data = json.load(file)
 
-        examples_selected = shrink_examples(data)
+        if(json_string.__contains__("color")):
+               examples_selected = shrink_examples(data, N_EXAMPLES//4)
+        else:
+               examples_selected = shrink_examples(data, N_EXAMPLES)
+
 
         for example in examples_selected:
                 prompt = example.get("input")
                 expected = [k for k, v in example['target_scores'].items() if v == 1][0]
+                response = None
                 answer = None
+                explanation = None
+                new_system_message = built_system_message(system_message, example)
+
                 try:
-                        answer = get_completion_zero_shot(system_message, prompt, model)
+                        response = get_completion_zero_shot(new_system_message, prompt, model)
                 except Exception as e:
-                        print("Error in example: ", example)
-                        print("Exeption: ", e.args[0])
-                        #mi fermo per 30 secondi
-                        time.sleep(30)
-                        #ritento la richiesta
-                        answer = get_completion_zero_shot(system_message, prompt, model)
+                        print("Completion Exception in example: ", example)
+                        time.sleep(60)
+                        response = get_completion_zero_shot(new_system_message, prompt, model)
                 finally:                
-                        if answer is not None :
-                                #check on the first word of the answer if it contains the expected answer
-                                correct = answer.split()[0].__contains__(expected) 
+                        if response is not None :
+                                re.sub("\n+", "\n", response)
+                                answer, explanation = response.split("\n", 1)
+                                correct = answer.__contains__(expected) 
                         else :
                                 correct = False       
-                df.loc[len(df.index)] = [prompt, expected, answer, correct]
-        df.to_csv("results/anachronisms_gpt3_5.csv", index=True)
+                df.loc[len(df.index)] = [prompt, expected, answer, explanation,  correct]
+
+        result_path = f"results/{json_string.split('/')[1].split('.')[0]}_results.json"       
+        df.to_json(result_path, index=True)
         
         accuracy = df['correct'].mean()
-        return accuracy * 100
+        return round(accuracy, 2)
         
