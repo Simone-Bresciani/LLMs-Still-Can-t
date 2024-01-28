@@ -7,10 +7,25 @@ import pandas as pd
 from get_completion import get_completion_zero_shot
 
 
-N_EXAMPLES = 50
+
+N_EXAMPLES = 2
 MULTIPLE_CHOICE_SUFFIX = "First answer repeating the answer you choose, in the second line explain your answer in 20 words. Choices:"
 FREE_RESPONSE_SUFFIX = "In the first line you answer just the result, in the second line explain your answer in 20 words."
 
+class Task:
+        def __init__(self, type, json_string, system_message):
+                self.type = type
+                self.json_string = json_string
+                self.system_message = system_message
+
+        def evaluate(self, model):
+                if self.type == "multiple_choice":
+                        return evaluate_multiple_choice_task(self.json_string, self.system_message, model)
+                elif self.type == "free_response":
+                        return evaluate_free_response_task(self.json_string, self.system_message, model)
+                else:
+                        raise Exception("Task not supported, check the type of the task.")
+                
 
 def shrink_examples(data, n):
         examples = data.get("examples", [])
