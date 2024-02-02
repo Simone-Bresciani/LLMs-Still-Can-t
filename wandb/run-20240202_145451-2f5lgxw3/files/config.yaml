@@ -1,0 +1,39 @@
+wandb_version: 1
+
+Name:
+  desc: null
+  value: Baseline [datasets/task_anachronisms.json]
+System Prompt:
+  desc: null
+  value: Does the following sentence contain non-contemporaneous (anachronistic) elements?.
+Model:
+  desc: null
+  value: gpt-3.5-turbo-0125
+Shots:
+  desc: null
+  value: 0
+_wandb:
+  desc: null
+  value:
+    python_version: 3.12.1
+    cli_version: 0.16.2
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1706882091.365814
+    t:
+      1:
+      - 55
+      - 95
+      2:
+      - 55
+      - 95
+      3:
+      - 16
+      - 23
+      4: 3.12.1
+      5: 0.16.2
+      8:
+      - 1
+      - 3
+      - 5
+      13: windows-amd64
