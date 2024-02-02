@@ -8,7 +8,7 @@ from get_completion import get_completion_zero_shot
 
 
 
-N_EXAMPLES = 10
+N_EXAMPLES = 50
 MULTIPLE_CHOICE_SUFFIX = "First answer repeating the answer you choose, in the second line explain your answer in 20 words. Choices:"
 FREE_RESPONSE_SUFFIX = "In the first line you answer just the result, in the second line explain your answer in 20 words."
 
@@ -26,12 +26,6 @@ class Task:
                 else:
                         raise Exception("Task not supported, check the type of the task.")                
 
-def shrink_examples(data, n):
-        examples = data.get("examples", [])
-        random.shuffle(examples) # shuffle examples so the difficult ones are not always at the end
-        if len(examples) > n:
-            examples = random.sample(examples, n) 
-        return examples
 
 def built_system_message(system_prompt, example):
         system_prompt = system_prompt + " " + MULTIPLE_CHOICE_SUFFIX
@@ -43,8 +37,7 @@ def evaluate_free_response_task(json_string, system_prompt, model):
         df = pd.DataFrame(columns=['prompt','expected', 'answer', 'explanation', 'correct'])
         with open(json_string, 'r') as file:
                 data = json.load(file)
-        
-        examples_selected = shrink_examples(data, N_EXAMPLES)
+                examples_selected = data.get("examples", [])
         for example in examples_selected:
                 prompt = example.get("input")
                 expected = example.get("target")
@@ -69,8 +62,8 @@ def evaluate_free_response_task(json_string, system_prompt, model):
                                 correct = False       
                 df.loc[len(df.index)] = [prompt, expected, answer, explanation,  correct]
         
-        result_path = f"results/{json_string.split('/')[1].split('.')[0]}_results.json"       
-        df.to_json(result_path, index=True)
+        #result_path = f"results/{json_string.split('/')[1].split('.')[0]}_results.json"       
+        #df.to_json(result_path, index=True)
         accuracy = df['correct'].mean()
         return round(accuracy, 2) , df      
 
@@ -78,13 +71,7 @@ def evaluate_multiple_choice_task(json_string, system_prompt, model):
         df = pd.DataFrame(columns=['prompt','expected', 'answer', 'explanation', 'correct'])
         with open(json_string, 'r') as file:
                 data = json.load(file)
-
-        if(json_string.__contains__("color")):
-               examples_selected = shrink_examples(data, N_EXAMPLES//4)
-        else:
-               examples_selected = shrink_examples(data, N_EXAMPLES)
-
-
+                examples_selected = data.get("examples", [])
         for example in examples_selected:
                 prompt = example.get("input")
                 expected = [k for k, v in example['target_scores'].items() if v == 1][0]
@@ -108,8 +95,8 @@ def evaluate_multiple_choice_task(json_string, system_prompt, model):
                                 correct = False       
                 df.loc[len(df.index)] = [prompt, expected, answer, explanation,  correct]
 
-        result_path = f"results/{json_string.split('/')[1].split('.')[0]}_results.json"       
-        df.to_json(result_path, index=True)     
+        #result_path = f"results/{json_string.split('/')[1].split('.')[0]}_results.json"       
+        #df.to_json(result_path, index=True)     
         accuracy = df['correct'].mean()
         return round(accuracy, 2) , df
         
