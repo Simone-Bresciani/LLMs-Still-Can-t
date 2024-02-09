@@ -48,13 +48,13 @@ def evaluate_free_response_task(json_string, system_prompt, model, shots, suffix
                         if response is not None :
                                 if response.__contains__("\n"):
                                         re.sub("\n+", "\n", response)
-                                        answer, explanation = response.split("\n", 1)
+                                        explanation, answer = response.rsplit("\n", 1)
                                         answer = answer.replace(' ', '')
-                                        correct = answer.__contains__(expected)
+                                        correct = expected.lower() in answer.lower()
                                 else :
                                         answer = response.replace(' ', '')
                                         explanation = "No explanation provided"
-                                        correct = answer.__contains__(expected)
+                                        correct = expected.lower() in answer.lower()
                         else :
                                 correct = False       
                 df.loc[len(df.index)] = [prompt, expected, answer, explanation,  correct]
@@ -84,12 +84,12 @@ def evaluate_multiple_choice_task(json_string, system_prompt, model, shots, suff
                         if response is not None :        
                                 if response.__contains__("\n"):
                                         re.sub("\n+", "\n", response)
-                                        answer, explanation = response.split("\n", 1)
-                                        correct = answer.__contains__(expected) 
+                                        explanation, answer = response.rsplit("\n", 1)
+                                        correct = expected.lower() in answer.lower()
                                 else :
                                         answer = response
                                         explanation = "No explanation provided"
-                                        correct = answer.__contains__(expected)   
+                                        correct = expected.lower() in answer.lower() 
                         else : 
                                 correct = False    
                 df.loc[len(df.index)] = [prompt, expected, answer, explanation,  correct]  
