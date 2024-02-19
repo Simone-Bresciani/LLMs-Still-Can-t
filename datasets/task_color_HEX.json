@@ -1,1 +1,326 @@
-{"examples": [{"input": "What is the color most closely matching this HEX representation: #3c636a ?", "target_scores": {"black": 0, "blue": 1, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "blue"}, {"input": "What is the color most closely matching this HEX representation: #812016 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 1, "white": 0, "yellow": 0}, "target": "red"}, {"input": "What is the color most closely matching this HEX representation: #4d4c46 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 1, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "gray"}, {"input": "What is the color most closely matching this HEX representation: #aeba3d ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 1, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "green"}, {"input": "What is the color most closely matching this HEX representation: #8d6e01 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 1}, "target": "yellow"}, {"input": "What is the color most closely matching this HEX representation: #837670 ?", "target_scores": {"black": 0, "blue": 0, "brown": 1, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "brown"}, {"input": "What is the color most closely matching this HEX representation: #aa6d72 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 1, "white": 0, "yellow": 0}, "target": "red"}, {"input": "What is the color most closely matching this HEX representation: #c7742f ?", "target_scores": {"black": 0, "blue": 0, "brown": 1, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "brown"}, {"input": "What is the color most closely matching this HEX representation: #208252 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 1, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "green"}, {"input": "What is the color most closely matching this HEX representation: #caefe3 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 1, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "green"}, {"input": "What is the color most closely matching this HEX representation: #762129 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 1, "white": 0, "yellow": 0}, "target": "red"}, {"input": "What is the color most closely matching this HEX representation: #f0a60e ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 1}, "target": "yellow"}, {"input": "What is the color most closely matching this HEX representation: #7638d0 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 1, "red": 0, "white": 0, "yellow": 0}, "target": "purple"}, {"input": "What is the color most closely matching this HEX representation: #271d00 ?", "target_scores": {"black": 0, "blue": 0, "brown": 1, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "brown"}, {"input": "What is the color most closely matching this HEX representation: #a8ff33 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 1, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "green"}], "shots": [{"input": "What is the color most closely matching this HEX representation: #b9c04e ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 1, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 0}, "target": "green"}, {"input": "What is the color most closely matching this HEX representation: #f098c1 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 1, "red": 0, "white": 0, "yellow": 0}, "target": "purple"}, {"input": "What is the color most closely matching this HEX representation: #b21548 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 1, "white": 0, "yellow": 0}, "target": "red"}, {"input": "What is the color most closely matching this HEX representation: #fa12cc ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 1, "white": 0, "yellow": 0}, "target": "red"}, {"input": "What is the color most closely matching this HEX representation: #efcfa2 ?", "target_scores": {"black": 0, "blue": 0, "brown": 0, "gray": 0, "green": 0, "orange": 0, "purple": 0, "red": 0, "white": 0, "yellow": 1}, "target": "yellow"}]}
+{
+    "examples": [
+        {
+            "input": "What is the color most closely matching this HEX representation: #3c636a ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 1,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "blue"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #812016 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 1,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "red"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #4d4c46 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 1,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "gray"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #aeba3d ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 1,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "green"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #8d6e01 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 1
+            },
+            "target": "yellow"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #837670 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 1,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "brown"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #aa6d72 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 1,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "red"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #c7742f ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 1,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "brown"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #208252 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 1,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "green"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #caefe3 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 1,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "green"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #762129 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 1,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "red"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #f0a60e ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 1
+            },
+            "target": "yellow"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #7638d0 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 1,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "purple"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #271d00 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 1,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "brown"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #a8ff33 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 1,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "green"
+        }
+    ],
+    "shots": [
+        {
+            "input": "What is the color most closely matching this HEX representation: #b9c04e ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 1,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "green"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #f098c1 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 1,
+                "red": 0,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "purple"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #0a80f9 ?",
+            "target_scores": {
+              "black": 0,
+              "blue": 1,
+              "brown": 0,
+              "gray": 0,
+              "green": 0,
+              "orange": 0,
+              "purple": 0,
+              "red": 0,
+              "white": 0,
+              "yellow": 0
+            },
+            "target": "blue"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #fa12cc ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 1,
+                "white": 0,
+                "yellow": 0
+            },
+            "target": "red"
+        },
+        {
+            "input": "What is the color most closely matching this HEX representation: #efcfa2 ?",
+            "target_scores": {
+                "black": 0,
+                "blue": 0,
+                "brown": 0,
+                "gray": 0,
+                "green": 0,
+                "orange": 0,
+                "purple": 0,
+                "red": 0,
+                "white": 0,
+                "yellow": 1
+            },
+            "target": "yellow"
+        }
+    ]
+}

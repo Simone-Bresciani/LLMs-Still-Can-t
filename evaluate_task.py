@@ -3,6 +3,7 @@ import re
 import time
 import pandas as pd
 from get_completion import get_completion_zero_shot
+from get_completion import get_completion_few_shots
 
 
 class Task:
@@ -30,6 +31,7 @@ def evaluate_free_response_task(json_string, system_prompt, model, shots, suffix
         with open(json_string, 'r') as file:
                 data = json.load(file)
                 examples_selected = data.get("examples", [])
+                shots_selected = data.get("shots", [])[:shots]
         for example in examples_selected:
                 prompt = example.get("input")
                 expected = example.get("target")
@@ -39,11 +41,17 @@ def evaluate_free_response_task(json_string, system_prompt, model, shots, suffix
                 new_system_message = system_prompt + " " + suffix
 
                 try:
-                        response = get_completion_zero_shot(new_system_message, prompt, model)
+                        if shots == 0: 
+                                response = get_completion_zero_shot(new_system_message, prompt, model)
+                        else:
+                                response = get_completion_few_shots(new_system_message, prompt, model, shots_selected)
                 except Exception as e:
                         print("Completion Exception in example: ", example)
                         time.sleep(60)
-                        response = get_completion_zero_shot(new_system_message, prompt, model)
+                        if shots == 0: 
+                                response = get_completion_zero_shot(new_system_message, prompt, model)
+                        else:
+                                response = get_completion_few_shots(new_system_message, prompt, model, shots_selected)
                 finally:                
                         if response is not None :
                                 if response.__contains__("\n"):
@@ -66,6 +74,8 @@ def evaluate_multiple_choice_task(json_string, system_prompt, model, shots, suff
         with open(json_string, 'r') as file:
                 data = json.load(file)
                 examples_selected = data.get("examples", [])
+                shots_selected = data.get("shots", [])[:shots]
+
         for example in examples_selected:
                 prompt = example.get("input")
                 expected = [k for k, v in example['target_scores'].items() if v == 1][0]
@@ -75,11 +85,17 @@ def evaluate_multiple_choice_task(json_string, system_prompt, model, shots, suff
                 new_system_message = built_system_message(system_prompt, suffix, example)
 
                 try:
-                        response = get_completion_zero_shot(new_system_message, prompt, model)
+                        if shots == 0: 
+                                response = get_completion_zero_shot(new_system_message, prompt, model)
+                        else:
+                                response = get_completion_few_shots(new_system_message, prompt, model, shots_selected)
                 except Exception as e:
                         print("Completion Exception in example: ", example)
                         time.sleep(60)
-                        response = get_completion_zero_shot(new_system_message, prompt, model)
+                        if shots == 0: 
+                                response = get_completion_zero_shot(new_system_message, prompt, model)
+                        else:
+                                response = get_completion_few_shots(new_system_message, prompt, model, shots_selected)
                 finally:        
                         if response is not None :        
                                 if response.__contains__("\n"):

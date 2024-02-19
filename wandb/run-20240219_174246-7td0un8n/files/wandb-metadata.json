@@ -1,0 +1,44 @@
+{
+    "os": "Windows-11-10.0.22631-SP0",
+    "python": "3.12.1",
+    "heartbeatAt": "2024-02-19T16:42:49.343321",
+    "startedAt": "2024-02-19T16:42:46.276051",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/Simone-Bresciani/LLMs-Still-Can-t.git",
+        "commit": "e5941246aa42fc1696c86529bb7ca60e7c68ddf7"
+    },
+    "email": "s.bresciani026@studenti.unibs.it",
+    "root": "C:/Users/simon/VSCode-workspace/LLMs-Still-Can-t",
+    "host": "Laptop-Simo",
+    "username": "simon",
+    "executable": "c:\\Users\\simon\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1098.0,
+        "min": 0.0,
+        "max": 1498.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1098.0,
+            "min": 0.0,
+            "max": 1498.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 117.89257431030273,
+            "used": 98.30961990356445
+        }
+    },
+    "memory": {
+        "total": 7.595859527587891
+    }
+}
