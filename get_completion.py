@@ -17,7 +17,7 @@ def get_completion_zero_shot(system, prompt, model):
 def get_completion_few_shots(system, prompt, model, shots_selected):
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY_4.0"), organization = "org-FwcUlxzfJx5sO1h5F3lxshSC")
     messages = []
-    #firt the system message
+    #first the system message
     messages.append({"role": "system", "content": system})
     #then the shots examples divided by user(the question) and assistant(the answer)
     for shot in shots_selected:
